@@ -16,10 +16,10 @@ func _physics_process(delta):
 		#jump_count = 1
 		#velocity.y = JUMP_VELOCITY
 	if not is_on_floor() or jump_count == 1 or jump_count == 2:
-		print("0")
+		#print("0")
 		velocity.y += gravity * delta
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
-		print("1")
+		#print("1")
 		jump_count = 1
 		velocity.y = JUMP_VELOCITY
 	elif Input.is_action_just_pressed("ui_up") and not is_on_floor() and jump_count == 1:
@@ -27,7 +27,12 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	elif is_on_floor():
 		jump_count = 0
-		
+	
+	if not is_on_floor():
+		print(abs(velocity.y))
+		scale.x = lerp(scale.x, clampf(abs(velocity.y)/625, 0.8, 1), 0.1)
+	else:
+		scale.x = 1
 		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	velocity.x = direction * SPEED
