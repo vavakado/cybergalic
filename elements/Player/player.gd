@@ -4,6 +4,9 @@ extends CharacterBody2D
 const SPEED = 160.0
 const JUMP_VELOCITY = -500.0
 var jump_count = 0
+
+# The target scale factor for the sprite.
+var target_scale := Vector2(1.0, 1.0)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -27,16 +30,15 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	elif is_on_floor():
 		jump_count = 0
-	
-	if not is_on_floor():
-		print(abs(velocity.y))
-		scale.x = lerp(scale.x, clampf(abs(velocity.y)/625, 0.8, 1), 0.1)
-	else:
-		scale.x = 1
-		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	velocity.x = direction * SPEED
 	move_and_slide()
+	if not is_on_floor():
+		$AnimatedSprite2D.scale.y = remap(abs(velocity.y), 0, abs(JUMP_VELOCITY), 0.75, 1.75)
+		$AnimatedSprite2D.scale.x = remap(abs(velocity.y), 0, abs(JUMP_VELOCITY), 1.25, 0.75)
+	else:
+		$AnimatedSprite2D.scale = Vector2(1,1)
+		
 	
 	if direction < 0:
 		animation.set_flip_h(true)
