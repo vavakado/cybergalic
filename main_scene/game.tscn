@@ -64,11 +64,14 @@ script = SubResource("GDScript_1du4v")
 
 [node name="Far buildings" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(256, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far buildings"]
-position = Vector2(129, 111)
+texture_repeat = 2
+position = Vector2(256, 111)
 texture = ExtResource("1_vnejr")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 192)
 
 [node name="back buildings" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
