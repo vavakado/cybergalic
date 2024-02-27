@@ -13,9 +13,8 @@ script = ExtResource("1_1i4bg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = ExtResource("2_v4y7p")
-animation = &"idle"
-frame_progress = 0.889689
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_5fsav")

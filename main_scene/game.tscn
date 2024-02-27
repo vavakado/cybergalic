@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctowx38i5vita"]
+[gd_scene load_steps=9 format=3 uid="uid://ctowx38i5vita"]
 
+[ext_resource type="Script" path="res://main_scene/game.gd" id="1_jfqr4"]
+[ext_resource type="Texture2D" uid="uid://c4mhwiwdngw0l" path="res://assets/background/far-buildings.png" id="1_vnejr"]
+[ext_resource type="Texture2D" uid="uid://csha1w2xlj58x" path="res://assets/background/back-buildings.png" id="2_e5qck"]
 [ext_resource type="PackedScene" uid="uid://d81i7qvehbwb" path="res://elements/Player/player.tscn" id="2_tby0y"]
 [ext_resource type="Texture2D" uid="uid://d0svd1sqv4v6v" path="res://assets/tileset/tileset.png" id="2_yto4t"]
+[ext_resource type="Texture2D" uid="uid://b0mr2rmef260r" path="res://assets/background/foreground.png" id="3_72koi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6h6b3"]
 texture = ExtResource("2_yto4t")
@@ -47,6 +51,32 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6h6b3")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_jfqr4")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Far buildings" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far buildings"]
+position = Vector2(298, 108)
+texture = ExtResource("1_vnejr")
+
+[node name="back buildings" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/back buildings"]
+position = Vector2(297, 119)
+texture = ExtResource("2_e5qck")
+
+[node name="foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(352, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/foreground"]
+position = Vector2(345, 153)
+texture = ExtResource("3_72koi")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-2, 0)
@@ -58,6 +88,5 @@ layer_0/tile_data = PackedInt32Array(983060, 65536, 0, 983059, 65536, 0, 983058,
 position = Vector2(329, 214)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true

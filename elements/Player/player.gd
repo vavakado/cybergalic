@@ -25,5 +25,5 @@ func _physics_process(delta):
 		animation.set_flip_h(false)
 	if direction == 0:
 		animation.play("idle")
-	if direction != 0:
+	elif direction :
 		animation.play("run")

@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://7blg3lmbld7q"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://7blg3lmbld7q"]
 
 [ext_resource type="Texture2D" uid="uid://dj2j37jkhvemy" path="res://assets/character/idle.png" id="1_hr2fl"]
+[ext_resource type="Texture2D" uid="uid://dbdssurp44ecp" path="res://assets/character/run.png" id="2_y7sxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmed2"]
 atlas = ExtResource("1_hr2fl")
@@ -16,6 +17,22 @@ region = Rect2(34, 0, 17, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7eti"]
 atlas = ExtResource("1_hr2fl")
+region = Rect2(51, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0j11"]
+atlas = ExtResource("2_y7sxa")
+region = Rect2(0, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu8qs"]
+atlas = ExtResource("2_y7sxa")
+region = Rect2(17, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weyos"]
+atlas = ExtResource("2_y7sxa")
+region = Rect2(34, 0, 17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8bi7"]
+atlas = ExtResource("2_y7sxa")
 region = Rect2(51, 0, 17, 20)
 
 [resource]
@@ -37,7 +54,19 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0j11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu8qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weyos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8bi7")
+}],
 "loop": true,
 "name": &"run",
 "speed": 10.0
