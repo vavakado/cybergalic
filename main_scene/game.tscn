@@ -10,14 +10,19 @@ script/source = "extends Node2D
 
 const TILE_SCENE = preload(\"res://tilemap.tscn\")
 var tileground = TILE_SCENE.instantiate()
+var spawned_tiles = [0]
 
 func _ready():
+	$Player.new_tile.connect(gen)
 	add_child(tileground)
 
-func gen():
-	var tileground = TILE_SCENE.instantiate()
-	tileground.global_position += Vector2(640, 0)
-	add_child(tileground)
+func gen(index: int):
+	print(spawned_tiles)
+	if !spawned_tiles.has(index):
+		var tileground = TILE_SCENE.instantiate()
+		tileground.global_position += Vector2((index)*640, 0)
+		add_child(tileground)
+		spawned_tiles.append(index)
 	#130 450
 func _process(delta):
 	pass
@@ -75,3 +80,5 @@ drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
+
+[connection signal="new_tile" from="Player" to="." method="_on_player_new_tile"]

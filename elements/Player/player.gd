@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 160.0
 const JUMP_VELOCITY = -400.0
 var jump_count = 0
+signal new_tile(index: int)
 
 # The target scale factor for the sprite.
 var target_scale := Vector2(1.0, 1.0)
@@ -53,4 +54,4 @@ func _physics_process(delta):
 		animation.play("run")
 		
 	if raycastleft.is_colliding() or raycastright.is_colliding():
-		get_tree().call_group("game", "gen")
+		new_tile.emit(floor(global_position.x/640)+1)
