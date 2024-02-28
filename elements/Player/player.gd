@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 160.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -400.0
 var jump_count = 0
 
 # The target scale factor for the sprite.
@@ -10,6 +10,8 @@ var target_scale := Vector2(1.0, 1.0)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var raycastleft = $RayCastLeft
+@onready var raycastright = $RayCastRight
 @onready var animation = $AnimatedSprite2D
 
 func _physics_process(delta):
@@ -33,6 +35,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	velocity.x = direction * SPEED
 	move_and_slide()
+	
 	if not is_on_floor():
 		$AnimatedSprite2D.scale.y = remap(abs(velocity.y), 0, abs(JUMP_VELOCITY), 0.75, 1.75)
 		$AnimatedSprite2D.scale.x = remap(abs(velocity.y), 0, abs(JUMP_VELOCITY), 1.25, 0.75)
@@ -48,3 +51,6 @@ func _physics_process(delta):
 		animation.play("idle")
 	elif direction :
 		animation.play("run")
+		
+	if raycastleft.is_colliding() or raycastright.is_colliding():
+		get_tree().call_group("game", "gen")
