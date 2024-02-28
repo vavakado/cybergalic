@@ -1,4 +1,5 @@
 extends Node2D
+<<<<<<< HEAD
 class tile_piece:
 	var index: int
 	var variant: int
@@ -27,5 +28,24 @@ func gen(index: int):
 		add_child(tileground)
 		spawned_tiles.append(tile_piece.new(index, 0))
 		
+=======
+
+const TILE_SCENE = preload("res://tilemap.tscn")
+var tileground = TILE_SCENE.instantiate()
+var spawned_tiles = [0]
+
+func _ready():
+	$Player.new_tile.connect(gen)
+	add_child(tileground)
+
+func gen(index: int):
+	print(spawned_tiles)
+	if !spawned_tiles.has(index):
+		var tileground = TILE_SCENE.instantiate()
+		tileground.global_position += Vector2((index)*640, 0)
+		add_child(tileground)
+		spawned_tiles.append(index)
+	#130 450
+>>>>>>> 0cea178 (new tilemap)
 func _process(delta):
 	pass
