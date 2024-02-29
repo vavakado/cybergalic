@@ -1,4 +1,7 @@
 extends Node2D
+
+const TILE_SCENE = preload("res://tilemap.tscn")
+
 class tile_piece:
 	var index: int
 	var variant: int
@@ -6,7 +9,6 @@ class tile_piece:
 		self.index = index
 		self.variant = variant
 		
-const TILE_SCENE = preload("res://tilemap.tscn")
 var spawned_tiles = [tile_piece.new(0, 0)]
 
 func _ready():
