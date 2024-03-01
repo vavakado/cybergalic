@@ -7,8 +7,11 @@
 [node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource("1_8cfnd")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 317)
+[node name="Player" parent="." instance=ExtResource("2_tby0y")]
+position = Vector2(152, 320)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(168, -3)
 offset = Vector2(0, -20)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_speed = 2.0
@@ -18,9 +21,6 @@ drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
-
-[node name="Player" parent="." instance=ExtResource("2_tby0y")]
-position = Vector2(152, 320)
 
 [node name="Enemy_Ttank" parent="." instance=ExtResource("3_cxxig")]
 position = Vector2(220, 312)
