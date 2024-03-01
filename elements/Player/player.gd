@@ -1,57 +1,63 @@
 extends CharacterBody2D
 
+const max_speed = 9600.0
+const accel = 50
+const friction = 70
 
 const SPEED = 160.0
-const JUMP_VELOCITY = -400.0
-var jump_count = 0
+const JUMP_VELOCITY = -1000.0
+const max_jumps = 1
+var current_jumps = 0
 signal new_tile(index: int)
 
-# The target scale factor for the sprite.
-var target_scale := Vector2(1.0, 1.0)
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 4320.0
 
 @onready var raycastleft = $RayCastLeft
 @onready var raycastright = $RayCastRight
 @onready var animation = $AnimatedSprite2D
 
-func _physics_process(delta):
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
-	#if Input.is_action_just_pressed("ui_up") and is_on_floor():
-		#jump_count = 1
-		#velocity.y = JUMP_VELOCITY
-	if not is_on_floor() or jump_count == 1 or jump_count == 2:
-		#print("0")
-		velocity.y += gravity * delta
-	if Input.is_action_just_pressed("W") and is_on_floor():
-		#print("1")
-		jump_count = 1
-		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_just_pressed("W") and not is_on_floor() and jump_count == 1:
-		jump_count = 2
-		velocity.y = JUMP_VELOCITY
-	elif is_on_floor():
-		jump_count = 0
-	var direction = Input.get_axis("A", "D")
-	velocity.x = direction * SPEED
-	move_and_slide()
+func input() -> Vector2:
+	var input_dir = Vector2.ZERO
+
+	input_dir.x = Input.get_axis("A", "D")
+	input_dir.y = Input.get_axis("S", "W")
+	input_dir = input_dir.normalized()
+	return input_dir
 	
+func player_movement():
+	if Input.is_action_just_pressed("A"):
+		animation.set_flip_h(true)
+	if Input.is_action_just_pressed("D"):
+		animation.set_flip_h(false)
+	move_and_slide()
+
+func jump(delta):
+	if Input.is_action_just_pressed("W"):
+		if current_jumps < max_jumps:
+			velocity.y = JUMP_VELOCITY
+			current_jumps += 1
+	if is_on_floor():
+		current_jumps = 0
+
+func _physics_process(delta):
+	velocity.y += gravity * delta
+	var input_dir: Vector2 = input()
+
+	if input_dir != Vector2.ZERO:
+		velocity = velocity.move_toward(max_speed * input_dir * delta, accel)
+		animation.play("run")
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, friction)
+		animation.play("idle")
+	jump(delta)
+	
+
 	if not is_on_floor():
 		$AnimatedSprite2D.scale.y = remap(abs(velocity.y), 0, abs(JUMP_VELOCITY), 0.75, 1.75)
 		$AnimatedSprite2D.scale.x = remap(abs(velocity.y), 0, abs(JUMP_VELOCITY), 1.25, 0.75)
 	else:
 		$AnimatedSprite2D.scale = Vector2(1,1)
-		
-	
-	if direction < 0:
-		animation.set_flip_h(true)
-	if direction > 0:
-		animation.set_flip_h(false)
-	if direction == 0:
-		animation.play("idle")
-	elif direction :
-		animation.play("run")
-		
+
 	if raycastleft.is_colliding() or raycastright.is_colliding():
 		new_tile.emit(floor(global_position.x/640)+1)
+	player_movement()
