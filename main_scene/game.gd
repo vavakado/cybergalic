@@ -1,6 +1,8 @@
 extends Node2D
 
-const TILE_SCENE = preload("res://tilemap.tscn")
+const Tilemap_start_1 = preload("res://elements/Tilemaps/Tilemap_start_1.tscn")
+const Tilemap_corridor_2_up = preload("res://elements/Tilemaps/Tilemap_corridor_2_up.tscn")
+const Tilemap_corridor_1 = preload("res://elements/Tilemaps/Tilemap_corridor_1.tscn")
 
 class tile_piece:
 	var index: int
@@ -12,7 +14,7 @@ class tile_piece:
 var spawned_tiles = [tile_piece.new(0, 0)]
 
 func _ready():
-	var tileground = TILE_SCENE.instantiate()
+	var tileground = Tilemap_start_1.instantiate()
 	$Player.new_tile.connect(gen)
 	add_child(tileground)
 	
