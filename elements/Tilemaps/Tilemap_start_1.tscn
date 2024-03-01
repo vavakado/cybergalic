@@ -152,6 +152,7 @@ sources/0 = SubResource("TileSetAtlasSource_6h6b3")
 size = Vector2(14, 47.5625)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(7, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ngj56")
@@ -163,5 +164,5 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
-position = Vector2(600, 376)
+position = Vector2(631, 376)
 shape = SubResource("RectangleShape2D_h2efo")
