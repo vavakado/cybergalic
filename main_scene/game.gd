@@ -1,6 +1,7 @@
 extends Node2D
 
 const TILE_SCENE = preload("res://tilemap.tscn")
+const CORRIDOR_SCENE = preload("res://elements/Tilemaps/corridor.tscn")
 
 class tile_piece:
 	var index: int
@@ -24,8 +25,8 @@ func check_array_for_index(arr, num):
 
 func gen(index: int):
 	if !check_array_for_index(spawned_tiles, index):
-		var tileground = TILE_SCENE.instantiate()
-		tileground.global_position += Vector2((index)*640, 0)
+		var tileground = CORRIDOR_SCENE.instantiate()
+		tileground.global_position += Vector2((index)*640+16, 0)
 		add_child(tileground)
 		spawned_tiles.append(tile_piece.new(index, 0))
 		
