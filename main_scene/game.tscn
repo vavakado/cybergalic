@@ -8,9 +8,8 @@
 script = ExtResource("1_8cfnd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(328, 280)
-offset = Vector2(0, -20)
-zoom = Vector2(0.1, 0.1)
+offset = Vector2(320, 180)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -20,9 +19,7 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="Player" parent="." instance=ExtResource("2_tby0y")]
-position = Vector2(152, 320)
+position = Vector2(160, 152)
 
 [node name="Enemy_Ttank" parent="." instance=ExtResource("3_cxxig")]
-position = Vector2(220, 312)
-
-[connection signal="new_tile" from="Player" to="." method="_on_player_new_tile"]
+position = Vector2(228, 144)

@@ -1,3 +1,3 @@
 extends Node
 
-signal new_tile(index: int, collider)
+signal move_camera(target: Vector2)
