@@ -4,28 +4,15 @@ extends CharacterBody2D
 const SPEED = 160.0
 const JUMP_VELOCITY = -400.0
 var jump_count = 0
-signal new_tile(index: int)
-
-# The target scale factor for the sprite.
 var target_scale := Vector2(1.0, 1.0)
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var raycastleft = $RayCastLeft
-@onready var raycastright = $RayCastRight
 @onready var animation = $AnimatedSprite2D
 
 func _physics_process(delta):
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
-	#if Input.is_action_just_pressed("ui_up") and is_on_floor():
-		#jump_count = 1
-		#velocity.y = JUMP_VELOCITY
 	if not is_on_floor() or jump_count == 1 or jump_count == 2:
-		#print("0")
 		velocity.y += gravity * delta
 	if Input.is_action_just_pressed("W") and is_on_floor():
-		#print("1")
 		jump_count = 1
 		velocity.y = JUMP_VELOCITY
 	elif Input.is_action_just_pressed("W") and not is_on_floor() and jump_count == 1:
@@ -52,6 +39,3 @@ func _physics_process(delta):
 		animation.play("idle")
 	elif direction :
 		animation.play("run")
-		
-	if raycastleft.is_colliding() or raycastright.is_colliding():
-		new_tile.emit(floor(global_position.x/656)+1)

@@ -24,5 +24,3 @@ position = Vector2(152, 320)
 
 [node name="Enemy_Ttank" parent="." instance=ExtResource("3_cxxig")]
 position = Vector2(220, 312)
-
-[connection signal="new_tile" from="Player" to="." method="_on_player_new_tile"]
