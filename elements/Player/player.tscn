@@ -7,6 +7,8 @@
 size = Vector2(15, 17)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_1i4bg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -23,10 +25,10 @@ shape = SubResource("RectangleShape2D_pcbb8")
 position = Vector2(0, -9)
 rotation = -4.71238
 target_position = Vector2(0, 15)
-collision_mask = 2
+collision_mask = 4
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -9)
 rotation = -1.57079
 target_position = Vector2(0, 15)
-collision_mask = 2
+collision_mask = 4

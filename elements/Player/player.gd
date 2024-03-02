@@ -54,4 +54,4 @@ func _physics_process(delta):
 		animation.play("run")
 		
 	if raycastleft.is_colliding() or raycastright.is_colliding():
-		new_tile.emit(floor(global_position.x/640)+1)
+		new_tile.emit(floor(global_position.x/656)+1)
