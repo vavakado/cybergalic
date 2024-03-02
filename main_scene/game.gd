@@ -23,15 +23,15 @@ func _ready():
 		for k in i:
 			if k == 0:
 				var tile = Tilemap_start_1.instantiate()
-				tile.global_position = Vector2(z*656, c*656)
+				tile.global_position = Vector2(z*560, c*352)
 				add_child(tile)
 			elif k == 1:
 				var tile = Tilemap_corridor_1.instantiate()
-				tile.global_position = Vector2(z*656, c*656)
+				tile.global_position = Vector2(z*560, c*352)
 				add_child(tile)
 			elif k == 2:
 				var tile = Tilemap_corridor_2_up.instantiate()
-				tile.global_position = Vector2(z*656, c*656)
+				tile.global_position = Vector2(z*560, c*352)
 				add_child(tile)
 			c += 1
 			print(c)
