@@ -18,6 +18,7 @@ func _ready():
 		map.push_back(be)
 		
 	var c = 0
+	map[0][0] = 0
 	var z = 0
 	print(map)
 	

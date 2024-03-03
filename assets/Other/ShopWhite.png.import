@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3n3t6k1yimow"
-path="res://.godot/imported/run.png-53dd00e1244eee0c3fa7d5dae6f8422a.ctex"
+uid="uid://c144ltgkvccb0"
+path="res://.godot/imported/ShopWhite.png-371bde58b1ecaffabea3dad7ca63bc43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/run.png"
-dest_files=["res://.godot/imported/run.png-53dd00e1244eee0c3fa7d5dae6f8422a.ctex"]
+source_file="res://assets/Other/ShopWhite.png"
+dest_files=["res://.godot/imported/ShopWhite.png-371bde58b1ecaffabea3dad7ca63bc43.ctex"]
 
 [params]
 

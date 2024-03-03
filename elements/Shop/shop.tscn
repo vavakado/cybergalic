@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://cv0cej5yejx51"]
+
+[ext_resource type="Texture2D" uid="uid://dtiic7fjbj5hv" path="res://assets/Other/Shop.png" id="1_oel01"]
+[ext_resource type="Script" path="res://Shop.gd" id="2_vc6cn"]
+[ext_resource type="Texture2D" uid="uid://c144ltgkvccb0" path="res://assets/Other/ShopWhite.png" id="3_lyg4h"]
+
+[sub_resource type="Animation" id="Animation_0kc4k"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ShopWhite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i20tl"]
+resource_name = "migalka"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ShopWhite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2.63902, 0.594604, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s61b8"]
+_data = {
+"RESET": SubResource("Animation_0kc4k"),
+"migalka": SubResource("Animation_i20tl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wte8q"]
+size = Vector2(50.264, 32.6038)
+
+[node name="Shop" type="Sprite2D"]
+position = Vector2(146, 277.6)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_oel01")
+script = ExtResource("2_vc6cn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../../Shop")
+libraries = {
+"": SubResource("AnimationLibrary_s61b8")
+}
+
+[node name="ShopWhite" type="Sprite2D" parent="AnimationPlayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(146, 277.6)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("3_lyg4h")
+
+[node name="ShopArea" type="Area2D" parent="AnimationPlayer"]
+position = Vector2(146.125, 277.6)
+scale = Vector2(2.20834, 2.20834)
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimationPlayer/ShopArea"]
+position = Vector2(-0.735847, -4.30186)
+shape = SubResource("RectangleShape2D_wte8q")
+
+[connection signal="body_entered" from="AnimationPlayer/ShopArea" to="." method="_on_shop_area_2_body_entered"]
+[connection signal="body_exited" from="AnimationPlayer/ShopArea" to="." method="_on_shop_area_body_exited"]
