@@ -11,6 +11,9 @@ size = Vector2(551, 344)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0i23"]
 size = Vector2(50.264, 32.6038)
 
+[sub_resource type="Animation" id="Animation_w0w7j"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_tweeg"]
 resource_name = "migalka"
 loop_mode = 1
@@ -26,9 +29,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_w0w7j"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2dqlx"]
 _data = {
