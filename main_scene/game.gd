@@ -9,6 +9,7 @@ const Tilemap_corner_1_down = preload("res://elements/Tilemaps/Tilemap_corner_1_
 @onready var Camera = $Camera2D
 const right = [0,1,2,3,4,5]
 const left = [1,2,3,6,7]
+const up = [3,5,7]
 func _ready():
 	Events.move_camera.connect(move_cam)
 	var map: Array[Array]
@@ -33,13 +34,24 @@ func _ready():
 		elif (selected_x == 4 and selected_y == 0):
 			map[selected_x][selected_y] = 7
 		else:
+			if selected_y >= 1:
+				if map[selected_x][selected_y-1] in up:
+					if selected_x > 4:
+						if map[selected_x+1][selected_y] in left:
+							if map[selected_x-1][selected_y] in right:
+								map[selected_x][selected_y] = [3].pick_random()
+							else:
+								map[selected_x][selected_y] = [3, 5].pick_random()
+					else:
+						if map[selected_x-1][selected_y] in right:
+							map[selected_x][selected_y] = [4, 6].pick_random()
 			if selected_x >= 0:
 				if selected_x < 4:
 					if map[selected_x+1][selected_y] in left:
 						if map[selected_x-1][selected_y] in right:
-							map[selected_x][selected_y] = [1,2,3].pick_random()
+							map[selected_x][selected_y] = [1,3].pick_random()
 						else:
-							map[selected_x][selected_y] = [0,6,7].pick_random()
+							map[selected_x][selected_y] = [0,7].pick_random()
 					else:
 						if map[selected_x-1][selected_y] in right:
 							if selected_y == 0:
@@ -50,10 +62,7 @@ func _ready():
 							map[selected_x][selected_y] = [4,5].pick_random()
 				else:
 					if map[selected_x-1][selected_y] in right:
-						if selected_y == 0:
-							map[selected_x][selected_y] = [1,3,7].pick_random()
-						else:
-							map[selected_x][selected_y] = [1,2,3,6,7].pick_random()
+						map[selected_x][selected_y] = [1,3,7].pick_random()
 					else:
 						map[selected_x][selected_y] = [4,5].pick_random()
 		selected_x += 1
@@ -96,5 +105,4 @@ func spawn_flipped_tile(variant, x, y):
 	tile.global_position += Vector2(560, 0)
 	add_child(tile)
 func move_cam(final_pos: Vector2):
-	print('bube')
 	Globals.camera_transition(Camera, "global_position", final_pos, 0.5)
