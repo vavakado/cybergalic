@@ -7,16 +7,20 @@ const Tilemap_corridor_2_down = preload("res://elements/Tilemaps/Tilemap_corrido
 const Tilemap_corner_1_up = preload("res://elements/Tilemaps/Tilemap_corner_1_up.tscn")
 const Tilemap_corner_1_down = preload("res://elements/Tilemaps/Tilemap_corner_1_down.tscn")
 @onready var Camera = $Camera2D
-const right = [0,1,2,3,4,5]
-const left = [1,2,3,6,7]
+const right = [1,2,3,6,7]
+const left = [0,1,2,3,4,5]
 const up = [3,5,7]
+var is_on_left
+var is_on_right
+var is_on_up
 func _ready():
+	#seed(177019)
 	Events.move_camera.connect(move_cam)
 	var map: Array[Array]
 	for i in range(5):
 		var be: Array
 		for j in range(5):
-			be.push_back(257)
+			be.push_back(275)
 		map.push_back(be)
 		
 	var c = 0
@@ -34,38 +38,32 @@ func _ready():
 		elif (selected_x == 4 and selected_y == 0):
 			map[selected_x][selected_y] = 7
 		else:
-			if selected_y >= 1:
-				if map[selected_x][selected_y-1] in up:
-					if selected_x > 4:
-						if map[selected_x+1][selected_y] in left:
-							if map[selected_x-1][selected_y] in right:
-								map[selected_x][selected_y] = [3].pick_random()
-							else:
-								map[selected_x][selected_y] = [3, 5].pick_random()
-					else:
-						if map[selected_x-1][selected_y] in right:
-							map[selected_x][selected_y] = [4, 6].pick_random()
-			if selected_x >= 0:
-				if selected_x < 4:
-					if map[selected_x+1][selected_y] in left:
-						if map[selected_x-1][selected_y] in right:
-							map[selected_x][selected_y] = [1,3].pick_random()
-						else:
-							map[selected_x][selected_y] = [0,7].pick_random()
-					else:
-						if map[selected_x-1][selected_y] in right:
-							if selected_y == 0:
-								map[selected_x][selected_y] = [1,3,7].pick_random()
-							else:
-								map[selected_x][selected_y] = [1,2,3,6,7].pick_random()
-						else:
-							map[selected_x][selected_y] = [4,5].pick_random()
-				else:
-					if map[selected_x-1][selected_y] in right:
-						map[selected_x][selected_y] = [1,3,7].pick_random()
-					else:
-						map[selected_x][selected_y] = [4,5].pick_random()
+			if map[selected_x][selected_y-1] in up:
+				is_on_up = true
+				if selected_x == 1 and selected_y == 1:
+					print("it's up there~!")
+			if map[selected_x-1][selected_y] in left:
+				is_on_left = true
+			if map[selected_x-1][selected_y] in left:
+				is_on_left = true
+			if is_on_left == true and is_on_right == true and is_on_up == true:
+				map[selected_x][selected_y] = 2
+			elif is_on_left == true and is_on_up == true:
+				map[selected_x][selected_y] = [2,6].pick_random()
+			elif is_on_left == true and is_on_right == true:
+				map[selected_x][selected_y] = [1,3].pick_random()
+			elif is_on_left == true:
+				map[selected_x][selected_y] = [1,3,7].pick_random()
+			elif is_on_up == true and is_on_right == true:
+				map[selected_x][selected_y] = 4
+			elif is_on_up == true:
+				map[selected_x][selected_y] = 4
+			else:
+				map[selected_x][selected_y] = 5
 		selected_x += 1
+		is_on_left = false
+		is_on_right = false
+		is_on_up = false
 		if selected_x == 5:
 			selected_y += 1
 			selected_x = 0
