@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var shot_sound = $shot_sound
 @onready var sprite = $Sprite2D
 @export var bullet_scene: PackedScene
 @export var mili_sec = 1
@@ -27,6 +28,9 @@ func shoot():
 	if can_shoot == true:
 		if can_fire == true:
 			$AnimationPlayer.play("pistol_shot")
+			if $AnimationPlayer.is_playing():
+				$AnimationPlayer.stop()
+				$AnimationPlayer.play("pistol_shot")
 			var bullet_ins = bullet_scene.instantiate()
 			bullet_ins.global_transform = $Pos2D.global_transform
 			bullet_ins.rotation = rotation
@@ -34,7 +38,7 @@ func shoot():
 			can_fire = false
 			shotimer.start()
 			ammo_mag -= 1
-		
+			shot_sound.play()
 func _on_timer_timeout():
 	can_fire = true
 

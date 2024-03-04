@@ -26,7 +26,8 @@ func _process(delta):
 func shoot():
 	if can_shoot == true:
 		if can_fire == true:
-			$AnimationPlayer.play("pistol_shot")
+			if $AnimationPlayer.is_playing() or !$AnimationPlayer.is_playing():
+				$AnimationPlayer.play("pistol_shot")
 			var bullet_ins = bullet_scene.instantiate()
 			bullet_ins.global_transform = $Pos2D.global_transform
 			bullet_ins.rotation = rotation

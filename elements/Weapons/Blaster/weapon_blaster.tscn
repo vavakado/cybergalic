@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2odfjcrcduc8"]
+[gd_scene load_steps=8 format=3 uid="uid://d2odfjcrcduc8"]
 
 [ext_resource type="Script" path="res://elements/Weapons/Blaster/weapon_blaster.gd" id="1_jdbmg"]
 [ext_resource type="PackedScene" uid="uid://cwogm48c2i0ga" path="res://elements/Weapons/Blaster/blaster_bullet.tscn" id="2_rookk"]
 [ext_resource type="Texture2D" uid="uid://wdypsh4v670y" path="res://assets/Weapons/Blaster/blaster.png" id="3_k2f7f"]
+[ext_resource type="AudioStream" uid="uid://c62015gf7tscj" path="res://assets/sounds/Blaster_shoot.wav" id="4_rpuvi"]
 
 [sub_resource type="Animation" id="Animation_nttqg"]
 length = 0.001
@@ -86,6 +87,9 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_2l2xe")
 }
+
+[node name="shot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rpuvi")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

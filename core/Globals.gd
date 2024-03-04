@@ -5,3 +5,4 @@ func camera_transition(node, property, fin_pos, duration):
 	tween.tween_property(node, property, fin_pos, duration)
 
 var shop_area_state = false
+var shoot = false
