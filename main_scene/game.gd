@@ -44,5 +44,4 @@ func spawn_tile(variant, x, y):
 	tile.global_position = Vector2(x*560, y*352)
 	add_child(tile)
 func move_cam(final_pos: Vector2):
-	print('bube')
 	Globals.camera_transition(Camera, "global_position", final_pos, 0.5)

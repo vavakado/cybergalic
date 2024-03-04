@@ -1,20 +1,129 @@
-[gd_scene format=3 uid="uid://ckneuw83fr72l"]
+[gd_scene load_steps=10 format=3 uid="uid://ckneuw83fr72l"]
+
+[ext_resource type="Texture2D" uid="uid://c3jv2yfgaas01" path="res://assets/Other/shop_background.png" id="1_iavds"]
+[ext_resource type="FontFile" uid="uid://c41t74vwryp0y" path="res://assets/fonts/cuyabra-Regular [RUS by Zephyrus].ttf" id="2_4vxj4"]
+[ext_resource type="Texture2D" uid="uid://dmlpnwoah5eqj" path="res://assets/Weapons/Pistol/pistol.png" id="3_n7sfh"]
+[ext_resource type="Texture2D" uid="uid://wdypsh4v670y" path="res://assets/Weapons/Blaster/blaster.png" id="4_mxd0v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yta2w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2wib"]
+
+[sub_resource type="Animation" id="Animation_fased"]
+resource_name = "shopanim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [Vector2(-140, 7), Vector2(8, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_akp58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x54wh"]
+_data = {
+"RESET": SubResource("Animation_akp58"),
+"shopanim": SubResource("Animation_fased")
+}
 
 [node name="GUI" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4vxj4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 1.0
-grow_vertical = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 138.0
+offset_bottom = 310.0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer"]
+position = Vector2(64.5, 73.5)
+scale = Vector2(0.969925, 0.854651)
+texture = ExtResource("1_iavds")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4vxj4")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yta2w")
+text = "Buy Pistol"
+
+[node name="pistol" type="Sprite2D" parent="ScrollContainer/MarginContainer/VBoxContainer/Button"]
+self_modulate = Color(0.776471, 0.776471, 0.776471, 1)
+position = Vector2(98, 11)
+rotation = -0.523598
+scale = Vector2(2.125, 2.125)
+texture = ExtResource("3_n7sfh")
+
+[node name="Button2" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4vxj4")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u2wib")
+text = "Buy Blaster"
+
+[node name="blaster" type="Sprite2D" parent="ScrollContainer/MarginContainer/VBoxContainer/Button2"]
+modulate = Color(0.839216, 0.839216, 0.839216, 1)
+position = Vector2(100, 6.00001)
+rotation = -0.523598
+scale = Vector2(2.00166, 2.00166)
+texture = ExtResource("4_mxd0v")
+
+[node name="shopanim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x54wh")
+}

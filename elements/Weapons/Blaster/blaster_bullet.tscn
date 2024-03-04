@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh8ledrx17bcx"]
+[gd_scene load_steps=4 format=3 uid="uid://cwogm48c2i0ga"]
 
-[ext_resource type="Texture2D" uid="uid://1xj2oqic2ace" path="res://assets/Weapons/Pistol/bullet.png" id="1_5dk5o"]
-[ext_resource type="Script" path="res://elements/Weapons/pistol_bullet.gd" id="1_tf4ab"]
+[ext_resource type="Script" path="res://elements/Weapons/Blaster/blaster_bullet.gd" id="1_vnkx3"]
+[ext_resource type="Texture2D" uid="uid://bvrs028n0l1a7" path="res://assets/Weapons/Blaster/bullet.png" id="2_78c7u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03xnh"]
 radius = 2.0
 height = 10.0
 
 [node name="bullet" type="Area2D"]
-script = ExtResource("1_tf4ab")
+script = ExtResource("1_vnkx3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_5dk5o")
+texture = ExtResource("2_78c7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

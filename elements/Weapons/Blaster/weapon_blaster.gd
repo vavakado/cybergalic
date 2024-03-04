@@ -7,8 +7,8 @@ extends Node2D
 @onready var reloadtimer = $ReloadTimer
 var can_fire = true
 var can_shoot = true
-@export var ammo_mag = 7
-@export var ammo = 30
+@export var ammo_mag = 20
+@export var ammo = 150
 @onready var mag_size = ammo_mag
 var ncount = 0
 
@@ -40,9 +40,15 @@ func _on_timer_timeout():
 
 func reload():
 	print("reload")
+	
 	var ammo_n = mag_size - ammo_mag
-	ammo = ammo - ammo_n
-	ammo_mag = mag_size
+	
+	if ammo >= ammo_n:
+		ammo -= ammo_n
+		ammo_mag = mag_size
+	else:
+		ammo_mag += ammo
+		ammo = 0
 	
 
 func _on_reload_timer_timeout():

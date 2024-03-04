@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh8ledrx17bcx"]
+
+[ext_resource type="Script" path="res://elements/Weapons/Pistol/pistol_bullet.gd" id="1_0a6np"]
+[ext_resource type="Texture2D" uid="uid://1xj2oqic2ace" path="res://assets/Weapons/Pistol/bullet.png" id="2_vsxvp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03xnh"]
+radius = 2.0
+height = 10.0
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_0a6np")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vsxvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_03xnh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

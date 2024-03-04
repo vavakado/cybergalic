@@ -1,8 +1,35 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3s7geu12gxp3"]
 
-[ext_resource type="Texture2D" uid="uid://dmlpnwoah5eqj" path="res://assets/Weapons/Pistol/pistol.png" id="1_3esot"]
-[ext_resource type="Script" path="res://elements/Weapons/weapon_pistol.gd" id="1_4qtje"]
-[ext_resource type="PackedScene" uid="uid://dh8ledrx17bcx" path="res://elements/Weapons/pistol_bullet.tscn" id="2_ij3ae"]
+[ext_resource type="Script" path="res://elements/Weapons/Pistol/weapon_pistol.gd" id="1_7nxjr"]
+[ext_resource type="PackedScene" uid="uid://dh8ledrx17bcx" path="res://elements/Weapons/Pistol/pistol_bullet.tscn" id="2_ppf5y"]
+[ext_resource type="Texture2D" uid="uid://dmlpnwoah5eqj" path="res://assets/Weapons/Pistol/pistol.png" id="3_j2gao"]
+
+[sub_resource type="Animation" id="Animation_nttqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_gsfp8"]
 resource_name = "pistol_shot"
@@ -32,33 +59,6 @@ tracks/1/keys = {
 "values": [0.0, -0.174533, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_nttqg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(7.5, 0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2l2xe"]
 _data = {
 "RESET": SubResource("Animation_nttqg"),
@@ -66,15 +66,15 @@ _data = {
 }
 
 [node name="Weapon_Pistol" type="Node2D"]
-script = ExtResource("1_4qtje")
-bullet_scene = ExtResource("2_ij3ae")
+script = ExtResource("1_7nxjr")
+bullet_scene = ExtResource("2_ppf5y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.5, 0.5)
-texture = ExtResource("1_3esot")
+texture = ExtResource("3_j2gao")
 
 [node name="Pos2D" type="Marker2D" parent="."]
-position = Vector2(14.5, -1)
+position = Vector2(18, -1)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.378
