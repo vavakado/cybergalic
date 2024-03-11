@@ -16,7 +16,7 @@ var is_on_left
 var is_on_right
 var is_on_up
 func _ready():
-	seed("ёп".hash())
+	#seed("ёп".hash())
 	Events.move_camera.connect(move_cam)
 	var map: Array[Array]
 	for i in range(5):
