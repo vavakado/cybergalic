@@ -7,8 +7,7 @@
 script = ExtResource("1_8cfnd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(320, 180)
-zoom = Vector2(0.1, 0.1)
+offset = Vector2(280, 176)
 position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
