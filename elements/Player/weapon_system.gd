@@ -1,20 +1,35 @@
 extends Node2D
 
-@export var StartWeapon: PackedScene
-var equiped_weapon : Node2D
+@export var weaponScene1: PackedScene
+@export var weaponScene2: PackedScene
+
+var currentWeapon
+var weaponNode
+
 
 func _ready():
-	var SW_ins = StartWeapon.instantiate()
-	if StartWeapon:
-		ewp(SW_ins)
+	equipWeapon(weaponScene1)
 
-func ewp(etpw):
-	if equiped_weapon:
-		equiped_weapon.queue_free()
-	else:
-		equiped_weapon = etpw
-		$Pos2D.add_child(equiped_weapon)
+func _process(delta):
+	pass
+
+func _input(event):
+	print(Globals.weapon_type)
+	if Globals.weapon_type == Globals.weapontype.NONE:
+		Globals.weapon_type = Globals.weapontype.PISTOL
+		equipWeapon(weaponScene1)
+	if Globals.weapon_type == Globals.weapontype.BLASTER:
+		equipWeapon(weaponScene2)
+
+func equipWeapon(weaponScene):
+	if weaponNode != null:
+		weaponNode.queue_free()
+
+	weaponNode = weaponScene.instantiate()
+	add_child(weaponNode)
+	currentWeapon = weaponNode
+	currentWeapon.position = $Pos2D.position
 
 func fire():
-	if equiped_weapon:
-		equiped_weapon.shoot()
+	if weaponNode:
+		weaponNode.shoot()

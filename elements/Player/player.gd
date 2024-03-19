@@ -52,7 +52,7 @@ func _physics_process(delta):
 		animation.set_flip_h(false)
 	if direction == 0:
 		animation.play("idle")
-	elif direction and $weapon_system.equiped_weapon:
+	elif direction and $weapon_system.weaponNode:
 		animation.play("run_with_gun")
 	else:
 		animation.play("run")
@@ -75,7 +75,7 @@ func _physics_process(delta):
 	click_fire()
 	
 func look_w():
-	$weapon_system.equiped_weapon.look_at(get_global_mouse_position())
+	$weapon_system.weaponNode.look_at(get_global_mouse_position())
 	
 func click_fire():
 	if shopopened == false:
@@ -83,7 +83,7 @@ func click_fire():
 			$weapon_system.fire()
 			
 func gui_ammo():
-	$weapon_system/GUI/Control/MarginContainer/Label.text = str($weapon_system.equiped_weapon.ammo_mag, " / ", $weapon_system.equiped_weapon.ammo)
+	$weapon_system/GUI/Control/MarginContainer/Label.text = str($weapon_system.weaponNode.ammo_mag, " / ", $weapon_system.weaponNode.ammo)
 	
 func pressE(state):
 	print(state)

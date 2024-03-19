@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckneuw83fr72l"]
+[gd_scene load_steps=11 format=3 uid="uid://ckneuw83fr72l"]
 
+[ext_resource type="Script" path="res://gui/gui.gd" id="1_3kmrx"]
 [ext_resource type="Texture2D" uid="uid://c3jv2yfgaas01" path="res://assets/Other/shop_background.png" id="1_iavds"]
 [ext_resource type="FontFile" uid="uid://c41t74vwryp0y" path="res://assets/fonts/cuyabra-Regular [RUS by Zephyrus].ttf" id="2_4vxj4"]
 [ext_resource type="Texture2D" uid="uid://dmlpnwoah5eqj" path="res://assets/Weapons/Pistol/pistol.png" id="3_n7sfh"]
@@ -46,6 +47,7 @@ _data = {
 }
 
 [node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_3kmrx")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -78,7 +80,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 7.0
 offset_right = 138.0
-offset_bottom = 850.0
+offset_bottom = 1390.0
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="ScrollContainer"]
@@ -95,28 +97,28 @@ theme_override_constants/margin_top = 5
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="pistol_button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4vxj4")
 theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yta2w")
 text = "Buy Pistol"
 
-[node name="pistol" type="Sprite2D" parent="ScrollContainer/MarginContainer/VBoxContainer/Button"]
+[node name="pistol" type="Sprite2D" parent="ScrollContainer/MarginContainer/VBoxContainer/pistol_button"]
 self_modulate = Color(0.776471, 0.776471, 0.776471, 1)
 position = Vector2(98, 11)
 rotation = -0.523598
 scale = Vector2(2.125, 2.125)
 texture = ExtResource("3_n7sfh")
 
-[node name="Button2" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="blaster_button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_4vxj4")
 theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u2wib")
 text = "Buy Blaster"
 
-[node name="blaster" type="Sprite2D" parent="ScrollContainer/MarginContainer/VBoxContainer/Button2"]
+[node name="blaster" type="Sprite2D" parent="ScrollContainer/MarginContainer/VBoxContainer/blaster_button"]
 modulate = Color(0.839216, 0.839216, 0.839216, 1)
 position = Vector2(100, 6.00001)
 rotation = -0.523598
@@ -127,3 +129,6 @@ texture = ExtResource("4_mxd0v")
 libraries = {
 "": SubResource("AnimationLibrary_x54wh")
 }
+
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/pistol_button" to="." method="_on_pistol_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/blaster_button" to="." method="_on_blaster_button_pressed"]
