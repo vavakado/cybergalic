@@ -36,7 +36,10 @@ func _ready():
 		elif (selected_x == 0 and selected_y == 4):
 			map[selected_x][selected_y] = 4
 		elif (selected_x == 4 and selected_y == 4):
-			map[selected_x][selected_y] = 6
+			if map[selected_x][selected_y-1] in up:
+				map[selected_x][selected_y] = 6
+			else:
+				map[selected_x][selected_y] = 7
 		elif (selected_x == 4 and selected_y == 0):
 			map[selected_x][selected_y] = 7
 		else:
