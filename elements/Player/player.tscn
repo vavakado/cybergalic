@@ -1,15 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://d81i7qvehbwb"]
+[gd_scene load_steps=10 format=3 uid="uid://d81i7qvehbwb"]
 
 [ext_resource type="Script" path="res://elements/Player/player.gd" id="1_1i4bg"]
 [ext_resource type="SpriteFrames" uid="uid://7blg3lmbld7q" path="res://elements/Player/player_animation.tres" id="2_v4y7p"]
+[ext_resource type="PackedScene" uid="uid://bmxrhb5vp16vd" path="res://elements/Other/Shadow.tscn" id="2_voq38"]
 [ext_resource type="Script" path="res://elements/Player/weapon_system.gd" id="3_7x2rc"]
 [ext_resource type="PackedScene" uid="uid://b3s7geu12gxp3" path="res://elements/Weapons/Pistol/weapon_pistol.tscn" id="4_eb5c4"]
 [ext_resource type="PackedScene" uid="uid://d2odfjcrcduc8" path="res://elements/Weapons/Blaster/weapon_blaster.tscn" id="4_eo411"]
 [ext_resource type="PackedScene" uid="uid://ckneuw83fr72l" path="res://gui/gui.tscn" id="5_g3kuj"]
 [ext_resource type="Texture2D" uid="uid://pkyalyi2vgru" path="res://assets/Other/pressE.png" id="6_lk4jn"]
-[ext_resource type="AudioStream" uid="uid://di3tnw3sgy7nk" path="res://assets/sounds/Jump.wav" id="7_k325i"]
-[ext_resource type="AudioStream" uid="uid://b7d7fxsnk13de" path="res://assets/sounds/double_jump.wav" id="8_emph0"]
-[ext_resource type="AudioStream" uid="uid://ddstv5y28i2tx" path="res://assets/sounds/run.mp3" id="9_6ksth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcbb8"]
 size = Vector2(12.8846, 17.6923)
@@ -21,6 +19,10 @@ scale = Vector2(1.3, 1.3)
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_1i4bg")
+
+[node name="Shadow" parent="." instance=ExtResource("2_voq38")]
+self_modulate = Color(1, 1, 1, 0.827451)
+position = Vector2(0.769231, -0.769231)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
@@ -60,20 +62,6 @@ position = Vector2(0, -7.69231)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-self_modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(1, 1, 1, 0.831373)
 position = Vector2(0.769231, -30.7692)
 texture = ExtResource("6_lk4jn")
-
-[node name="jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_k325i")
-
-[node name="double_jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_emph0")
-
-[node name="run" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_6ksth")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.26
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -54,7 +54,8 @@ position = Vector2(279.5, 176)
 shape = SubResource("RectangleShape2D_lshm8")
 
 [node name="Shop" type="Sprite2D" parent="."]
-position = Vector2(146, 277.6)
+visible = false
+position = Vector2(146, 259.03)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("3_4bsrl")
 

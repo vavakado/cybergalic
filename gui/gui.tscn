@@ -80,7 +80,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 7.0
 offset_right = 138.0
-offset_bottom = 1390.0
+offset_bottom = 1742.0
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="ScrollContainer"]
