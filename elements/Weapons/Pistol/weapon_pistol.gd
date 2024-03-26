@@ -14,9 +14,9 @@ var ncount = 0
 
 func _process(delta):
 	if global_rotation_degrees <= -90 or global_rotation_degrees >= 90:
-		sprite.scale.y = -1
+		self.scale.y = -1
 	else:
-		sprite.scale.y = 1
+		self.scale.y = 1
 	
 	if ammo_mag == 0 and ncount == 0:
 		ncount = 1
@@ -26,7 +26,9 @@ func _process(delta):
 func shoot():
 	if can_shoot == true:
 		if can_fire == true:
-			if $AnimationPlayer.is_playing() or !$AnimationPlayer.is_playing():
+			$AnimationPlayer.play("pistol_shot")
+			if $AnimationPlayer.is_playing():
+				$AnimationPlayer.stop()
 				$AnimationPlayer.play("pistol_shot")
 			var bullet_ins = bullet_scene.instantiate()
 			bullet_ins.global_transform = $Pos2D.global_transform

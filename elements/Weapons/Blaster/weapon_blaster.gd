@@ -15,9 +15,9 @@ var ncount = 0
 
 func _process(delta):
 	if global_rotation_degrees <= -90 or global_rotation_degrees >= 90:
-		sprite.scale.y = -1
+		self.scale.y = -1
 	else:
-		sprite.scale.y = 1
+		self.scale.y = 1
 	
 	if ammo_mag == 0 and ncount == 0:
 		ncount = 1

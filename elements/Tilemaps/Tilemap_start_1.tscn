@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0bbppfjdka4l"]
+[gd_scene load_steps=11 format=3 uid="uid://d0bbppfjdka4l"]
 
 [ext_resource type="TileSet" uid="uid://clsu7aflgopp0" path="res://elements/Tilemaps/tileset.tres" id="1_ain0h"]
 [ext_resource type="Script" path="res://elements/Tilemaps/Tilemap_start_1.gd" id="1_an1jd"]
 [ext_resource type="Texture2D" uid="uid://dtiic7fjbj5hv" path="res://assets/Other/Shop.png" id="3_4bsrl"]
+[ext_resource type="PackedScene" uid="uid://bmxrhb5vp16vd" path="res://elements/Other/Shadow.tscn" id="3_matr5"]
 [ext_resource type="Texture2D" uid="uid://c144ltgkvccb0" path="res://assets/Other/ShopWhite.png" id="4_8gjo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lshm8"]
-size = Vector2(551, 344)
+size = Vector2(560, 352)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0i23"]
 size = Vector2(50.264, 32.6038)
@@ -49,12 +50,15 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(279.5, 176)
+position = Vector2(280, 176)
 shape = SubResource("RectangleShape2D_lshm8")
 
+[node name="Shadow" parent="." instance=ExtResource("3_matr5")]
+position = Vector2(145, 285)
+scale = Vector2(5.25, 2.2)
+
 [node name="Shop" type="Sprite2D" parent="."]
-visible = false
+modulate = Color(2, 2, 2, 1)
 position = Vector2(146, 259.03)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("3_4bsrl")
@@ -66,7 +70,7 @@ collision_layer = 16
 collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/ShopArea"]
-position = Vector2(-0.735847, -4.30186)
+position = Vector2(-0.962269, -0.013587)
 shape = SubResource("RectangleShape2D_p0i23")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shop/ShopArea"]

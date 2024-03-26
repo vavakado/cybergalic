@@ -52,7 +52,6 @@ func _physics_process(delta):
 		animation.play("idle")
 	else:
 		animation.play("run")
-	
 	if Globals.shop_area_state == true and Input.is_action_just_pressed("bukva_e") and shopopened == false and animcount == 1:
 		$weapon_system/GUI/ScrollContainer.show()
 		$weapon_system/GUI/shopanim.play("shopanim")

@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://clsu7aflgopp0" path="res://elements/Tilemaps/tileset.tres" id="2_kya5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lshm8"]
-size = Vector2(551, 344)
+size = Vector2(560, 352)
 
 [node name="Node2D2" type="Node2D" groups=["start"]]
 script = ExtResource("1_ppb3q")
@@ -19,7 +19,7 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(279.5, 176)
+position = Vector2(280, 176)
 shape = SubResource("RectangleShape2D_lshm8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

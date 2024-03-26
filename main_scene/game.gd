@@ -114,8 +114,8 @@ func spawn_flipped_tile(variant, x, y):
 	tile.global_position += Vector2(560, 0)
 	add_child(tile)
 func move_cam(final_pos: Vector2):
-	Globals.camera_transition(Camera, "global_position", final_pos, 0.5)
-	
+	#Globals.camera_transition(Camera, "global_position", final_pos, 0.5)
+	pass
 func add_enterances(map, y):
 	var row = []
 	var no_down = true

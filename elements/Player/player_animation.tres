@@ -1,8 +1,16 @@
-[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://7blg3lmbld7q"]
+[gd_resource type="SpriteFrames" load_steps=32 format=3 uid="uid://7blg3lmbld7q"]
 
 [ext_resource type="Texture2D" uid="uid://dj2j37jkhvemy" path="res://assets/character/idle.png" id="1_hr2fl"]
 [ext_resource type="Texture2D" uid="uid://d3n3t6k1yimow" path="res://assets/character/run.png" id="2_y7sxa"]
 [ext_resource type="Texture2D" uid="uid://bbdtod57p7v65" path="res://assets/character/run_with_gun.png" id="3_803pd"]
+[ext_resource type="Texture2D" uid="uid://d1qy0pbc0pmm1" path="res://assets/character/run_vniz/1.png" id="3_uvlst"]
+[ext_resource type="Texture2D" uid="uid://duplfp6mfuuph" path="res://assets/character/run_vniz/2.png" id="4_rxfs2"]
+[ext_resource type="Texture2D" uid="uid://dsav13gxg25b6" path="res://assets/character/run_vniz/3.png" id="5_38ph4"]
+[ext_resource type="Texture2D" uid="uid://bhh81jl43nspd" path="res://assets/character/run_vniz/4.png" id="6_72f66"]
+[ext_resource type="Texture2D" uid="uid://0ykns37qrm7x" path="res://assets/character/run_vniz/5.png" id="7_hq73w"]
+[ext_resource type="Texture2D" uid="uid://dm7ryn2xgovsi" path="res://assets/character/run_vniz/6.png" id="8_poiaf"]
+[ext_resource type="Texture2D" uid="uid://ci8rmxebchyr7" path="res://assets/character/run_vniz/7.png" id="9_igjvg"]
+[ext_resource type="Texture2D" uid="uid://oiranrgb7hyd" path="res://assets/character/run_vniz/8.png" id="10_pacxx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmed2"]
 atlas = ExtResource("1_hr2fl")
@@ -130,6 +138,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uvlst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rxfs2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_38ph4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_72f66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hq73w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_poiaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_igjvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pacxx")
+}],
+"loop": true,
+"name": &"run_vniz",
 "speed": 15.0
 }, {
 "frames": [{

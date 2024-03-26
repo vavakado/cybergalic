@@ -27,8 +27,9 @@ position = Vector2(0.769231, -0.769231)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = ExtResource("2_v4y7p")
-animation = &"run_with_gun"
-frame_progress = 0.463932
+animation = &"run"
+frame = 7
+frame_progress = 0.270326
 offset = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
